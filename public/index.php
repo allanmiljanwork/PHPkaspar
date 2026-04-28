@@ -4,6 +4,29 @@ if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])) {
     return false; // serve the requested resource as-is.
 }
 
+
+
+// require_once __DIR__ . '/../src/Router.php';
+// require_once __DIR__ . '/../src/DB.php';
+
+
+spl_autoload_register(function ($class) {
+    $class = substr($class, 4);
+    require_once __DIR__ . "/../src/$class.php";
+});
+
+
+use App\Controllers\PublicController as PC;
+
+$router = new App\Router();
+dump($router);
+
+$db = new App\DB();
+dump($db);
+
+$controller = new PC();
+dump($controller);
+
 // switch ($_SERVER['REQUEST_URI']) {
 //     case '/':
 //         $title = 'World news';
