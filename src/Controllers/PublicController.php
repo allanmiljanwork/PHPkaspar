@@ -65,4 +65,14 @@ class PublicController
 
     }
 
+    public function form() {
+        view('form');
+    }
+
+    public function answer() {
+        dump($_SERVER);
+        dump($_GET);
+        dump($_POST);
+    }
+
 }
