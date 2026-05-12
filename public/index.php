@@ -8,11 +8,8 @@ if (preg_match('/\.(?:png|jpg|jpeg|gif|css|js)$/', $_SERVER["REQUEST_URI"])) {
 
 require __DIR__ . '/../helpers.php';
 
-spl_autoload_register(function ($class) {
-    $class = substr($class, 4);
-    $class = str_replace('\\', '/', $class);
-    require_once __DIR__ . "/../src/$class.php";
-});
+require __DIR__ . '/../vendor/autoload.php';
+
 require __DIR__ . '/../routes.php';
 
 
